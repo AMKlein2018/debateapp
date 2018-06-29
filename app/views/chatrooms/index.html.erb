@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chatrooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chatrooms.each do |chatroom| %>
+      <ul>
+        <li><strong><%= chatroom.name %></li></strong><br />
+          <div class = "editlinks">
+            <%= link_to 'Show', chatroom %> |
+            <%= link_to 'Edit', edit_chatroom_path(chatroom) %> |
+            <%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %> |
+            <%= link_to 'Join', chatroom_chatroom_users_path(chatroom), method: :post %> |
+            <%= link_to 'Leave', chatroom_chatroom_users_path(chatroom), method: :delte %>
+          </div>
+      </ul>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chatroom', new_chatroom_path %>
